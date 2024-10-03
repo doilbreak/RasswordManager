@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="555.0" prefWidth="408.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.radilbe.rassword.PasswordManagerController">
+    <children>
+        <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="408.0" spacing="10" style="-fx-background-color: white;">
+         <AnchorPane prefHeight="18.0" prefWidth="408.0">
+            <children>
+                  <Button fx:id="minimizeButton" layoutX="358.0" layoutY="2.0" onAction="#minimizeWindow" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;" text="-">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+                  <!-- <Button fx:id="maximizeButton" onAction="#maximizeWindow" style="-fx-background-color: white;" text="[]" />-->
+                  <Button fx:id="closeButton" layoutX="382.0" layoutY="6.0" onAction="#closeWindow" prefHeight="17.0" prefWidth="24.0" style="-fx-background-color: white;" text="X" textFill="#f50707" />
+               <ImageView fitHeight="24.0" fitWidth="33.0" layoutX="2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@rm.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+        </HBox>
+        <AnchorPane prefHeight="400.0" prefWidth="408.0" style="-fx-background-color: white;">
+            <children>
+                <!-- User Table -->
+                <TableView fx:id="userTable" layoutY="169.0" prefHeight="352.0" prefWidth="408.0">
+                    <columns>
+                        <TableColumn fx:id="usernameColumn" prefWidth="121.0" text="Username" />
+                        <TableColumn fx:id="emailColumn" prefWidth="124.0" text="Email" />
+                        <TableColumn fx:id="passwordColumn" prefWidth="162.0" text="Password" />
+                    </columns>
+                </TableView>
+
+                <!-- Input Fields and Buttons -->
+                <GridPane layoutX="1.0" prefHeight="147.0" prefWidth="263.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" maxWidth="134.0" minWidth="93.0" prefWidth="109.0" />
+                        <ColumnConstraints halignment="LEFT" maxWidth="147.0" minWidth="31.0" prefWidth="138.0" />
+                        <ColumnConstraints halignment="LEFT" maxWidth="118.0" minWidth="13.0" prefWidth="13.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints valignment="CENTER" />
+                        <RowConstraints prefHeight="38.0" />
+                        <RowConstraints prefHeight="26.0" />
+                        <RowConstraints prefHeight="26.0" />
+                        <RowConstraints prefHeight="26.0" />
+                    </rowConstraints>
+
+                    <children>
+                        <Label prefHeight="17.0" prefWidth="65.0" text="Username:" />
+                        <TextField fx:id="usernameField" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" />
+
+                        <Label prefHeight="17.0" prefWidth="41.0" text="Email:" GridPane.rowIndex="1" />
+                        <TextField fx:id="emailField" prefHeight="25.0" prefWidth="109.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label prefHeight="17.0" prefWidth="61.0" text="Password:" GridPane.rowIndex="2" />
+                        <Label fx:id="passwordLabel" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Button onAction="#generatePassword" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: gray;" text="Generate Password" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+
+
+                        <!-- Password Length Slider -->
+                        <Label prefHeight="17.0" prefWidth="99.0" text="Password Length:" GridPane.rowIndex="4" />
+                        <Slider fx:id="passwordLengthSlider" blockIncrement="1" max="32" min="8" prefHeight="14.0" prefWidth="90.0" value="15" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="passwordLengthLabel" text="15" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                    </children>
+                </GridPane>
+
+                <Button layoutX="14.0" layoutY="141.0" onAction="#deleteUser" prefHeight="26.0" prefWidth="51.0" style="-fx-background-color: gray;" text="Delete" />
+                <Button layoutX="79.0" layoutY="141.0" onAction="#saveUser" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: gray;" text="Save" />
+                  <Button fx:id="openAddUserDialog" layoutX="146.0" layoutY="141.0" onAction="#openAddUserDialog" prefHeight="26.0" prefWidth="117.0" style="-fx-background-color: gray;" text="Add Manual User" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
